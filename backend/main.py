@@ -46,6 +46,9 @@ def get_embedding(img: Image.Image) -> list[float]:
 
 
 async def _seed_database():
+    if SEED_COUNT <= 0:
+        print("Seed: SEED_COUNT is 0, skipping.")
+        return
     if collection.count() > 0:
         print(f"Seed: collection already has {collection.count()} images, skipping.")
         return
